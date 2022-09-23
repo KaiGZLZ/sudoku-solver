@@ -1,0 +1,14 @@
+.mainContainer {
+
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #2196F3;
+    padding: 10px;
+    height: 30rem;  
+    width: 30rem;
+    border: 2px solid black;
+    gap: 0.3rem;
+    align-items: center;
+    justify-content: center;
+  }
+
