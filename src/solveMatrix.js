@@ -1,19 +1,19 @@
 
-export function solveMatrix(matrix, xPosition, yPosition){
+export function solveMatrix(matrix){
     
-    for (let x=xPosition; x<9; ++x){
-        for (let y=yPosition; y<9; ++y){
+    for (let x=0; x<9; ++x){
+        for (let y=0; y<9; ++y){
             if(matrix[x][y] === 0){
                 for (let num=1; num<10; ++num){
                     if(prove(matrix, num, x,y)){
                         
                         matrix[x][y] = num;
                         
-                        if(solveMatrix(matrix, x, y) === false)
+                        if(solveMatrix(matrix) === false)
                         matrix[x][y] = 0;
                     }
                 }
-                if(matrix[x][y] === 0){
+                if(matrix[x][y] === 0){  
                     return false;
                 } 
             }
@@ -145,6 +145,20 @@ export function proveElementInserted(matrix, arrayOfColumns, arrayOfWrongColumns
 
         arrayOfBoxes[boxNumber].push(newValue);
     }
+}
+
+export function somethingIsWrong( arrayOfWrongColumns, arrayOfWrongRows, arrayOfWrongBoxes){
+    
+    if (arrayOfWrongColumns.some((element) => {return (element === true)}))
+        return true;
+        
+    if (arrayOfWrongRows.some((element) => {return (element === true)}))
+        return true;
+        
+    if (arrayOfWrongBoxes.some((element) => {return (element === true)}))
+        return true;
+        
+    return false;
 }
 
 

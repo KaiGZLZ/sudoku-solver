@@ -27,3 +27,7 @@ input[type=number] {
 .wrong {
     background-color: rgb(255, 209, 209);
 }
+
+.changeColor {
+  color: blue;
+}

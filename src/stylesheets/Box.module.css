@@ -9,5 +9,13 @@
     justify-content: center;
 
     background-color: white;
+  }
 
+  @media (max-width:500px) {
+
+    .box {
+      
+      height: 6.6rem;  
+      width: 6.6rem;
+    }
   }

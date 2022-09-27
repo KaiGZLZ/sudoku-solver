@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { solveMatrix, proveElementInserted } from "../solveMatrix";
+import { solveMatrix, proveElementInserted, somethingIsWrong } from "../solveMatrix";
 
 const matrixSlice = createSlice({
 	name: 'matrix',
@@ -12,7 +12,8 @@ const matrixSlice = createSlice({
 		arrayOfWrongBoxes: new Array(9).fill(false),
 		arrayOfWrongRows: new Array(9).fill(false),
 		arrayOfWrongColumns: new Array(9).fill(false),
-		showSolutionState: false
+		showSolutionState: false,
+		somethingIsWrong: false
 	},
 	reducers: {
 
@@ -25,7 +26,9 @@ const matrixSlice = createSlice({
 					state.matrixSolution.push(new Array(9).fill(0))
 				}
 			}
-			proveElementInserted(state.matrix, state.arrayOfColumns, state.arrayOfWrongColumns, state.arrayOfRows, state.arrayOfWrongRows, state.arrayOfBoxes, state.arrayOfWrongBoxes, action.payload, )
+			proveElementInserted(state.matrix, state.arrayOfColumns, state.arrayOfWrongColumns, state.arrayOfRows, state.arrayOfWrongRows, state.arrayOfBoxes, state.arrayOfWrongBoxes, action.payload, state.somethingIsWrong)
+
+			state.somethingIsWrong = somethingIsWrong(state.arrayOfWrongColumns, state.arrayOfWrongRows, state.arrayOfWrongBoxes)
 
 			state.matrix[action.payload.xPosition][action.payload.yPosition] = action.payload.newValue;
 			state.matrixSolution[action.payload.xPosition][action.payload.yPosition] = action.payload.newValue;
@@ -33,17 +36,18 @@ const matrixSlice = createSlice({
 		},
 		solve(state){
 			
-			if (state.matrix.length === 0){
+			if (state.somethingIsWrong === false){
+
+				if (state.matrix.length === 0){
 				
-				for (let i=0; i<9; ++i){
-					state.matrix.push(new Array(9).fill(0))
-					state.matrixSolution.push(new Array(9).fill(0))
+					for (let i=0; i<9; ++i){
+						state.matrix.push(new Array(9).fill(0))
+						state.matrixSolution.push(new Array(9).fill(0))
+					}
 				}
+				solveMatrix(state.matrix);
 			}
-			solveMatrix(state.matrix, 0 , 0);
-
-
-			console.log(state.matrix);
+			
 
 		},
 		cleanSudoku(state) {
@@ -55,6 +59,8 @@ const matrixSlice = createSlice({
 			state.arrayOfWrongBoxes = new Array(9).fill(false);
 			state.arrayOfWrongRows = new Array(9).fill(false);
 			state.arrayOfWrongColumns = new Array(9).fill(false);
+			state.showSolutionState = false;
+			state.somethingIsWrong = false;
 		},
 		showSolution(state){
 			
@@ -66,7 +72,7 @@ const matrixSlice = createSlice({
 				}
 			}
 
-			solveMatrix(state.matrixSolution, 0 , 0);
+			solveMatrix(state.matrixSolution);
 
 			for (let x = 0; x < state.matrix.length; x++) {
 				for (let y = 0; y < state.matrix.length; y++) {

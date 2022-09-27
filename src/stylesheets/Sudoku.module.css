@@ -12,3 +12,13 @@
     justify-content: center;
   }
 
+  @media (max-width:500px) {
+
+    .mainContainer {
+
+      padding: 10px;
+      height: 20rem;  
+      width: 20rem;
+    }
+  }
+

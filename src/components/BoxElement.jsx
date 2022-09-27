@@ -1,9 +1,11 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { matrixActions } from "../Redux/matrixSlice";
 import style from "../stylesheets/BoxElement.module.css"
 
 function BoxElement( { xPosition, yPosition, boxNumber} ) {
+
+  const dispatch = useDispatch();
 
   const matrix = useSelector(state => state.matrix.matrix);
   const matrixSolution = useSelector(state => state.matrix.matrixSolution);
@@ -12,6 +14,10 @@ function BoxElement( { xPosition, yPosition, boxNumber} ) {
   const arrayOfWrongBoxes = useSelector(state => state.matrix.arrayOfWrongBoxes);
 
   const showSolutionState = useSelector(state => state.matrix.showSolutionState);
+
+
+  const styleForWrightOrWrongBoxElement = ((arrayOfWrongColumns.length!==0)&&((arrayOfWrongBoxes[boxNumber])||arrayOfWrongColumns[xPosition]||arrayOfWrongRows[yPosition]))? " "+ style.wrong : '';
+  const styleForSolutionOrSudokuNumber = ((showSolutionState)&&(!matrix[xPosition][yPosition])) ? " "+ style.changeColor : "";
 
   const number = useMemo(() => {
 
@@ -27,23 +33,9 @@ function BoxElement( { xPosition, yPosition, boxNumber} ) {
           return matrixSolution[xPosition][yPosition] ? matrixSolution[xPosition][yPosition] : '';
       }  
     }
-
-
-
-    /*return showSolutionState ? 'V' : 'F';
-
-    if(showSolutionState){
-
-      
-    }
-    else{
-      return matrix[xPosition][yPosition]
-    }*/
-
   }, [showSolutionState]);
 
-  const dispatch = useDispatch();
-
+  
   const handleChange = e => {
 
     let newValue;
@@ -64,11 +56,12 @@ function BoxElement( { xPosition, yPosition, boxNumber} ) {
   return (
     <>
       <input 
-        type="number"
-        className={`${style.box}${((arrayOfWrongColumns.length!=0)&&((arrayOfWrongBoxes[boxNumber])||arrayOfWrongColumns[xPosition]||arrayOfWrongRows[yPosition]))? " "+ style.wrong : ''}`} 
-        value={ showSolutionState ? number : (matrix.length == 0)||(matrix[xPosition][yPosition] == 0) ? '' : matrix[xPosition][yPosition]}   
-        onChange={handleChange} 
-        /> 
+          type="number"
+          className={`${style.box}${styleForWrightOrWrongBoxElement}${styleForSolutionOrSudokuNumber}`} 
+          value={ showSolutionState ? number : (matrix.length === 0)||(matrix[xPosition][yPosition] === 0) ? '' : matrix[xPosition][yPosition]}   
+          onChange={handleChange} 
+          /> 
+      
     </>
   )
 }

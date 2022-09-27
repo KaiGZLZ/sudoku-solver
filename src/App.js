@@ -1,34 +1,43 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './App.module.css';
+import ModalError from './components/ModalError';
 import Sudoku from './components/Sudoku';
 import { matrixActions } from './Redux/matrixSlice';
 
 function App() {
 
+  const [modalHidden, setModalHidden] = useState(true);
+
   const dispatch = useDispatch();
 
-  const matrix = useSelector(state => state.matrix.matrix);
-  const arrayOfBoxes = useSelector(state => state.matrix.arrayOfBoxes);
-  const arrayOfWrongColumns = useSelector(state => state.matrix.arrayOfWrongColumns);
-  const arrayOfWrongBoxes = useSelector(state => state.matrix.arrayOfWrongBoxes);
-
   const showSolutionState = useSelector(state => state.matrix.showSolutionState);
-
+  const somethingIsWrong = useSelector(state => state.matrix.somethingIsWrong);
+  
   const showSolution = () => {
-    
-    if(!showSolutionState)  dispatch(matrixActions.showSolution());
 
-    dispatch(matrixActions.changeShowSolutionState());
+    if (somethingIsWrong)
+      setModalHidden(false)
+    
+    else{
+      if(!showSolutionState)  dispatch(matrixActions.showSolution());
+
+      dispatch(matrixActions.changeShowSolutionState());
+    }
   }
 
   const solveMatrix = () => {
-    dispatch(matrixActions.solve())
+
+    if (somethingIsWrong)
+      setModalHidden(false)
+    
+    else
+      dispatch(matrixActions.solve())
   }
 
   const cleanMatrix = () => {
     dispatch(matrixActions.cleanSudoku())
   }
-
 
   return (
     <>
@@ -40,6 +49,11 @@ function App() {
           <button className={style.button} onClick={cleanMatrix}> Clean Sudoku </button>
           
         </div>
+
+        <ModalError 
+          modalHidden={modalHidden}
+          setModalHidden={setModalHidden}
+          />
 
         <Sudoku />
       </div>

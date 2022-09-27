@@ -8,9 +8,11 @@
 }
 
 .buttonsContainer{
-
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     margin: 1rem;
-
 }
 
 .button {
@@ -31,3 +33,15 @@
 .buttonChanged {
     background-color: rgb(255, 113, 113);
 }
+
+@media (max-width:500px) {
+
+    .App {
+        justify-content: initial;
+        padding: 3rem 0;
+    }
+
+    .button {
+        font-size: 1.5rem;
+    }
+  }
