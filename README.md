@@ -1,4 +1,10 @@
-# Getting Started with the App!
+# Getting Started with the Sudoku Solver!
+
+- [Help when solving sudokus](#help-when-solving-sudokus).
+- [Show the solution](#show-the-solution).
+- [Solve the puzzle](#solve-the-puzzle).
+- [Clean All](#clean-all).
+
 
 Once the folder has been downloaded, proceed to access to the command promt to  install all the corresponding libraries and dependencies using:
 
@@ -14,7 +20,7 @@ After installing, proceed to start the program using:
 
 
 
-### -> Help when solving sudokus
+### Help when solving sudokus
 
 When you try to solve the sudoku, it can be seen when the user enters repeated numbers in a box, in a row or a column, since they will be highlighted in red as shown in the image below
 
@@ -24,7 +30,7 @@ When you try to solve the sudoku, it can be seen when the user enters repeated n
 
 
 
-### -> Show the solution
+### Show the solution
 
 If you need extra help, it is possible to preview the sudoku solution by clicking "Show Solution". You can later remove the option by clicking it again.
 
@@ -32,7 +38,7 @@ If you need extra help, it is possible to preview the sudoku solution by clickin
 
 
 
-### -> Solve de puzzle
+### Solve the puzzle
 
 There is also the option to simply display the sudoku solution by clicking the "Solve Sudoku" option.
 
@@ -42,6 +48,6 @@ It is important to fix all errors before displaying any solutions, otherwise the
 
 
 
-### -> Clean all
+### Clean all
 
 Finally you can press the "Clean" option to restart the Sudoku and erase all the information, so that you can start again.
