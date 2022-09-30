@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Getting Started with the App!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Once the folder has been downloaded, proceed to access to the command promt to  install all the corresponding libraries and dependencies using:
 
-## Available Scripts
+```npm install```
 
-In the project directory, you can run:
+After installing, proceed to start the program using:
 
-### `npm start`
+```npm start```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**And now you can start solving sudokus!!**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![This is an image](./images/Captura.PNG)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### -> Help when solving sudokus
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+When you try to solve the sudoku, it can be seen when the user enters repeated numbers in a box, in a row or a column, since they will be highlighted in red as shown in the image below
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![This is an image](./images/Captura3.PNG)
+![This is an image](./images/Captura4.PNG)
+![This is an image](./images/Captura5.PNG)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### -> Show the solution
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you need extra help, it is possible to preview the sudoku solution by clicking "Show Solution". You can later remove the option by clicking it again.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![This is an image](./images/Captura6.PNG)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### -> Solve de puzzle
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+There is also the option to simply display the sudoku solution by clicking the "Solve Sudoku" option.
 
-### Code Splitting
+It is important to fix all errors before displaying any solutions, otherwise the following message will appear
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![This is an image](./images/Captura7.PNG)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+### -> Clean all
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Finally you can press the "Clean" option to restart the Sudoku and erase all the information, so that you can start again.
